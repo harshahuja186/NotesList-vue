@@ -1,6 +1,6 @@
 <template>
 
-    <nav class="navbar is-success" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-danger" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <RouterLink :to="{name: 'notes'}"  
                 class="navbar-burger is-active navbar-item is-size-2 is-family-monospace has-text-weight-bold">
