@@ -6,11 +6,13 @@ import Navbar from './components/Layout/Navbar.vue'
 
 <template>
 
-  <Navbar />
+  <Navbar/>
 
-  <div>
+  <div class="container p-2">
     <RouterView />
   </div>
+
+  <div style="height: 80vh;"></div>
 
 </template>
 
