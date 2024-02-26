@@ -1,20 +1,19 @@
 <template>
 
     <nav class="navbar is-danger" role="navigation" aria-label="main navigation">
-<<<<<<< HEAD
         <div class="container px-2">
             <div class="navbar-brand">
                 <RouterLink :to="{name: 'notes'}"  
                     class="navbar-item is-size-3 is-size-2-tablet is-family-monospace has-text-weight-bold">
                     <HighlightText :text="'NotesList'"/>
                 </RouterLink>
-=======
+            </div>
         <div class="navbar-brand">
             <RouterLink :to="{name: 'notes'}"  
                 class="navbar-burger is-active navbar-item is-size-2 is-family-monospace has-text-weight-bold">
                 NotesList
             </RouterLink>
->>>>>>> dfad1b866286b6c5dc613f08d244eaafb7c6077f
+
 
                 <a role="button" :class="{'is-active': showNavBarMenu}" class="navbar-burger" 
                 @click.prevent="showNavBarMenu = !showNavBarMenu"
