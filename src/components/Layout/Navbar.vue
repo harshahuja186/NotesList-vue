@@ -7,13 +7,6 @@
                     class="navbar-item is-size-3 is-size-2-tablet is-family-monospace has-text-weight-bold">
                     <HighlightText :text="'NotesList'"/>
                 </RouterLink>
-            </div>
-        <div class="navbar-brand">
-            <RouterLink :to="{name: 'notes'}"  
-                class="navbar-burger is-active navbar-item is-size-2 is-family-monospace has-text-weight-bold">
-                NotesList
-            </RouterLink>
-
 
                 <a role="button" :class="{'is-active': showNavBarMenu}" class="navbar-burger" 
                 @click.prevent="showNavBarMenu = !showNavBarMenu"

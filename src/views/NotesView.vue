@@ -10,7 +10,7 @@
 
         <div class="field is-grouped is-grouped-right">
             <div class="control">
-                <button :disabled="!newNode" class="button is-link is-warning"
+                <button :disabled="!newNode" class="button is-link is-warning has-text-weight-bold	"
                     @click.prevent="addNote">
                     Add New Note
                 </button>
@@ -18,7 +18,7 @@
         </div>          
     </div>      
 
-    <SingleNote v-for="note in notes" :key="note.id" :note="note"/>
+    <SingleNote v-for="note in notes" :key="note.id" :note="note" @removeNote="removeNote"/>
 
 
 </template>
@@ -41,6 +41,11 @@
 
 
     const newNode = ref('');
+
+    const removeNote = (deleteNote) => {
+        notes.value = notes.value.filter((note) => note.id !== deleteNote.id);
+        // console.log(deleteNote.id);
+    }
 
     const currentDate = new Date().getTime().toString();
 

@@ -11,7 +11,7 @@
         </div>
         <footer class="card-footer">
             <a href="#" class="card-footer-item">Edit</a>
-            <a href="#" class="card-footer-item">Delete</a>
+            <a href="#" class="card-footer-item" @click.prevent="deleteHandler">Delete</a>
         </footer>
     </div>
 
@@ -26,8 +26,15 @@ const props = defineProps({
     note: {
         type: Object,
         required: true,
-    }
+    },
+
 });
+
+const emit = defineEmits(['removeNote']);
+
+const deleteHandler = () => {
+    emit('removeNote', props.note);
+}
 
 const characterLength = computed(() => {
     return props.note.content.length;
