@@ -2,7 +2,7 @@
 
     <AddEditNote v-model="noteContent" ref="addEditNoteRef" bgColor="link" label="Edit Note">
         <template #button>
-            <button @click.prevent="cancelEditHandler" class="button mr-4">Cancel</button>
+            <button @click.prevent="cancelEditHandler" class="button has-text-weight-bold mr-4">Cancel</button>
             <button :disabled="!noteContent" 
                 @click.prevent="editNoteHandler"
                 class="button is-link is-warning has-text-weight-bold">

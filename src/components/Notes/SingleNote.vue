@@ -4,8 +4,9 @@
         <div class="card-content">
             <div class="content" style="white-space: pre-line;">
                 {{ note.content }}
-                <div class="has-text-right has-text-gray-light has-text-weight-medium">
-                    <small>{{ characterLength}} {{ characterLength > 1 ? 'characters' : 'character' }}</small>
+                <div class="columns mt-2 has-text-gray-light has-text-weight-medium">
+                    <small class="column">{{ formattedDate.toLocaleString() }}</small>
+                    <small class="column has-text-right">{{ characterLength}} {{ characterLength > 1 ? 'characters' : 'character' }}</small>
                 </div>
             </div>
         </div>
@@ -31,7 +32,6 @@ const props = defineProps({
     },
 });
 
-
 const deleteHandler = () => {
     modals.deleteModal = true;
 }
@@ -39,6 +39,9 @@ const deleteHandler = () => {
 const characterLength = computed(() => {
     return props.note.content.length;
 });
+
+const formattedDate = new Date(+props.note.date);
+// console.log("formatted date:- ", formattedDate.toLocaleString());
 
 
 const modals = reactive({

@@ -9,8 +9,17 @@
         </template>
     </AddEditNote>
 
-    <SingleNote v-for="note in notes" :key="note.id" :note="note" />
+    <progress class="progress is-medium is-dark" max="100" v-if="!notesStore.notesLoaded"/>
 
+    <template v-else-if="!notes.length">
+        <div class="has-text-centered is-family-monospace py-6 is-size-4 has-text-grey-light">
+            No Notes Added here yet!!!
+        </div>
+    </template>
+
+    <template v-else>
+        <SingleNote v-for="note in notes" :key="note.id" :note="note" />
+    </template>
 
 </template>
 
