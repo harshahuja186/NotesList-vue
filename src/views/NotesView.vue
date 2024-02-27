@@ -1,29 +1,18 @@
 <template>
 
-    <div class="has-background-danger-dark my-4 p-4">
-        <div class="field">
-            <label class="label is-size-4">Note</label>
-            <div class="control">
-                <textarea class="textarea" placeholder="Enter a Note...." v-model="newNode" ref="newNoteRef"></textarea>
-            </div>
-        </div>
+    <AddEditNote v-model="newNote" ref="addEditNoteRef">
+        <template #button>
+            <button :disabled="!newNote" class="button is-link is-warning has-text-weight-bold	"
+                @click.prevent="addNote">
+                Add New Note
+            </button>
+        </template>
+    </AddEditNote>
 
-        <div class="field is-grouped is-grouped-right">
-            <div class="control">
-                <button :disabled="!newNode" class="button is-link is-warning has-text-weight-bold	"
-                    @click.prevent="addNote">
-                    Add New Note
-                </button>
-            </div>
-        </div>          
-    </div>      
-
-    <SingleNote v-for="note in notes" :key="note.id" :note="note" @removeNote="removeNote"/>
+    <SingleNote v-for="note in notes" :key="note.id" :note="note" />
 
 
 </template>
-
-
 
 
 
@@ -31,33 +20,25 @@
 
     import {ref} from 'vue';
     import SingleNote from '../components/Notes/SingleNote.vue'
+    import {useNotesStore} from '../stores/NotesStore'
+    import { storeToRefs } from 'pinia';
+    import AddEditNote from '../components/Notes/AddEditNote.vue';
 
-    const notes = ref([
-        {id: 'id1', content: "First Node"},
-        {id: 'id2', content: "Second Node"},
-    ]);
+    const addEditNoteRef = ref(null);
+    const newNote = ref('');
 
-    const newNoteRef = ref(null);
-
-
-    const newNode = ref('');
-
-    const removeNote = (deleteNote) => {
-        notes.value = notes.value.filter((note) => note.id !== deleteNote.id);
-        // console.log(deleteNote.id);
-    }
-
-    const currentDate = new Date().getTime().toString();
+    const notesStore = useNotesStore();
+    const { notes } = storeToRefs(notesStore);
+    // const {addNote} = notesStore;
 
     const addNote = () => {
-        const note = {
-            id: currentDate,
-            content: newNode.value,
-        }
-        console.log(note);
-        notes.value.unshift(note);
-        newNode.value = '';
-        newNoteRef.value.focus();
+        notesStore.addNote(newNote.value);
+        newNote.value = '';
+        addEditNoteRef.value.focusTextArea();
+    }
+
+    const editNote = () => {
+        notesStore.editNote();
     }
 
 </script>
