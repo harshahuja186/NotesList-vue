@@ -53,7 +53,8 @@ npm run dev
 ![Home](src/assets/project_screenshots/NotesList.png)
 ![Create Note](src/assets/project_screenshots/create_note.png)
 ![Edit Note](src/assets/project_screenshots/update_note.png)
-![Delete Confirmation Modal](src/assets/project_screenshots/Delete Modal.png)
+![Delete Confirmation Modal](src/assets/project_screenshots/Delete_Modal.png)
+![Register](src/assets/project_screenshots/NotesList_Register.png)
 ![Login](src/assets/project_screenshots/NotesList_login.png)
 
 
