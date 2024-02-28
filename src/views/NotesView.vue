@@ -27,7 +27,7 @@
 
 <script setup>
 
-    import {ref} from 'vue';
+    import {onMounted, ref} from 'vue';
     import SingleNote from '../components/Notes/SingleNote.vue'
     import {useNotesStore} from '../stores/NotesStore'
     import { useCharactersLimit } from '../composables/useCharactersLimit'
@@ -37,10 +37,17 @@
     const addEditNoteRef = ref(null);
     const newNote = ref('');
 
+
+    
     const notesStore = useNotesStore();
     const { notes } = storeToRefs(notesStore);
     // const {addNote} = notesStore;
+    
+    onMounted(() => {
+        notesStore.getNotes();
+    })
 
+    
     const addNote = () => {
         notesStore.addNote(newNote.value);
         newNote.value = '';

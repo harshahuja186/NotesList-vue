@@ -18,15 +18,19 @@
             </div>
 
             <div id="navbarBasicExample" :class="{'is-active': showNavBarMenu}" class="navbar-menu">
-
+                <div class="navbar-start">
+                </div>
                 <div class="navbar-end">
                     <RouterLink :to="{name: 'notes'}" active-class="is-active" class="navbar-item is-size-5 has-text-weight-semibold">Notes</RouterLink>
-
+                    
                     <RouterLink :to="{name: 'stats'}" active-class="is-active" class="navbar-item is-size-5 has-text-weight-semibold">Stats</RouterLink>
+                    <button v-if="!isLoggedIn" @click="logout"
+                     class="button is-warning is-small mt-5 ml-3 has-text-weight-bold">Logout</button>
+                     <button v-else @click="login"
+                     class="button is-warning is-small mt-5 ml-3 has-text-weight-bold">Login</button>                     
                 </div>
             </div>
         </div>
-
     </nav>
 
 </template>
@@ -37,9 +41,30 @@
 
 import {ref} from 'vue'
 import HighlightText from '../Common/HighlightText.vue'
+import { useAuthStore } from '@/stores/AuthStore';
+import { useRouter } from 'vue-router';
+import { storeToRefs } from 'pinia';
 
 const showNavBarMenu = ref(false);
 
+const authStore = useAuthStore();
+
+const logout = async() => {
+    await authStore.logoutUser();
+    router.push({name: 'auth'});
+}
+
+const router = useRouter();
+
+const login = async() => {
+    router.push({path: 'auth'});
+}
+
+
+const {isLoggedIn} = storeToRefs(authStore);
+
+
+// const isLoggedIn = ref(true);
 </script>
 
 

@@ -11,6 +11,9 @@ export const useNotesStore = defineStore('notesStore', () => {
     const notes = ref([]);
     let notesLoaded = ref(false);
 
+    const notesCollectionRef = collection(db, 'users', 'Mtf8fZEoAwPIC8BPqP9Dfi03qvT2', 'notes');
+    const notesCollectionQuery = query(notesCollectionRef, orderBy('date', 'desc'));    
+
 
     const getNoteContentById = computed(() => {
         return (id) => {

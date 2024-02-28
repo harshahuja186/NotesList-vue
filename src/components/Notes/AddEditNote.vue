@@ -1,6 +1,6 @@
 <template>
 
-    <div class="my-4 p-4" :class="`has-background-${bgColor}-dark`">
+    <div class="textareaMargin my-4 p-4" :class="`has-background-${bgColor}-dark`">
         <div class="field">
             <label class="label is-size-4 has-text-white">{{label}}</label>
             <div class="control">
@@ -9,7 +9,7 @@
                     :value="modelValue" 
                     @input="$emit('update:modelValue', $event.target.value)" 
                     ref="textareaRef"
-                    maxlength="100"
+                    maxlength="500"
                     v-autofocus>
                 </textarea>
             </div>
@@ -57,3 +57,13 @@
     })
 
 </script>
+
+
+<style scoped>
+
+.textareaMargin{
+    margin-top: 160px;
+}
+
+
+</style>

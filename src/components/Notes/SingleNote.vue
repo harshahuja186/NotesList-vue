@@ -3,10 +3,10 @@
     <div class="card mb-4">
         <div class="card-content">
             <div class="content" style="white-space: pre-line;">
-                {{ note.content }}
+                <div class="has-text-weight-semibold">{{ note.content }}</div>
                 <div class="columns mt-2 has-text-gray-light has-text-weight-medium">
-                    <small class="column">{{ formattedDate.toLocaleString() }}</small>
-                    <small class="column has-text-right">{{ characterLength}} {{ characterLength > 1 ? 'characters' : 'character' }}</small>
+                    <small class="column has-text-grey">{{ formattedDate.toLocaleString() }}</small>
+                    <small class="column has-text-grey has-text-right">{{ characterLength}} {{ characterLength > 1 ? 'characters' : 'character' }}</small>
                 </div>
             </div>
         </div>
