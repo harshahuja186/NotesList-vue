@@ -19,6 +19,10 @@ coverage
 
 firebase.js 
 
+src/js/firebase.js
+src/js/firebase
+
+firebase
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
